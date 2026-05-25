@@ -1,56 +1,45 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box; 
+function appendToDisplay(value) {   
+    document.getElementById('display').value += value;
 }
-body{
-    font-family: 'Poppins', sans-serif;
-    background: #f5f5f5;
+
+function clearDisplay() {
+    document.getElementById('display').value = '';
 }
-h1{
-    text-align: center;
-    margin-top: 50px;
-    color: #333;
+
+function calculate() {
+    try {
+        const display = document.getElementById('display');
+        const result = eval(display.value);
+        display.value = result;
+    } catch (error) {
+        document.getElementById('display').value = 'Error';
+    }
 }
-#calculator{
-    width: 300px;
-    margin: 100px auto;
-    padding: 20px;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+
+function deleteLast() {
+    const display = document.getElementById('display');
+    display.value = display.value.slice(0, -1);
 }
-#display{
-    width: 100%;
-    height: 50px;
-    margin-bottom: 20px;
-    padding: 10px;
-    font-size: 18px;
-    text-align: right;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-#buttons{
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-}
-button{
-    width: 100%;
-    height: 50px;
-    font-size: 18px;
-    border: none;
-    border-radius: 5px;
-    background: #f0f0f0;
-    cursor: pointer;
-}
-button:hover{
-    background: #e0e0e0;
-}
-button.operator{
-    background: #ff9500;
-    color: #fff;
-}
-button.operator:hover{
-    background: #222222;
-}
+
+// Keyboard support
+document.addEventListener('keydown', function(event) {
+    const key = event.key;
+    if ((key >= '0' && key <= '9') || ['+', '-', '*', '/', '%', '.'].includes(key)) {
+        appendToDisplay(key);
+    } else if (key === 'Enter') {
+        calculate();
+    } else if (key === 'Backspace') {
+        deleteLast();
+    } else if (key === 'Escape') {
+        clearDisplay();
+    }
+});
+
+// Paste support
+const display = document.getElementById('display');
+display.addEventListener('paste', function(event) {
+    event.preventDefault();
+    const text = event.clipboardData.getData('text/plain');
+    appendToDisplay(text);
+});
+
