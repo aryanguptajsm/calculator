@@ -1,45 +1,150 @@
-function appendToDisplay(value) {   
-    document.getElementById('display').value += value;
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+}
+body{
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+h1{
+    text-align: center;
+    margin-bottom: 30px;
+    color: #fff;
+    font-size: clamp(24px, 5vw, 36px);
+}
+#calculator{
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+#display{
+    width: 100%;
+    height: 60px;
+    margin-bottom: 20px;
+    padding: 15px;
+    font-size: clamp(16px, 4vw, 24px);
+    text-align: right;
+    border: 2px solid #667eea;
+    border-radius: 8px;
+    background: #f9f9f9;
+}
+#display:focus{
+    outline: none;
+    border-color: #764ba2;
+    box-shadow: 0 0 8px rgba(118, 75, 162, 0.3);
+}
+#buttons{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+button{
+    width: 100%;
+    height: 50px;
+    font-size: clamp(14px, 3vw, 18px);
+    border: none;
+    border-radius: 8px;
+    background: #f0f0f0;
+    color: #333;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+button:hover{
+    background: #e0e0e0;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+button:active{
+    transform: translateY(0);
+}
+#clear, #delete{
+    background: #ff6b6b;
+    color: #fff;
+}
+#clear:hover, #delete:hover{
+    background: #ff5252;
+}
+#equals{
+    background: #667eea;
+    color: #fff;
+    grid-column: span 2;
+}
+#equals:hover{
+    background: #764ba2;
+}
+button[data-value="%"], button[data-value="/"], button[data-value="*"], button[data-value="-"], button[data-value="+"]{
+    background: #ff9500;
+    color: #fff;
+}
+button[data-value="%"]:hover, button[data-value="/"]:hover, button[data-value="*"]:hover, button[data-value="-"]:hover, button[data-value="+"]:hover{
+    background: #e68a00;
 }
 
-function clearDisplay() {
-    document.getElementById('display').value = '';
-}
-
-function calculate() {
-    try {
-        const display = document.getElementById('display');
-        const result = eval(display.value);
-        display.value = result;
-    } catch (error) {
-        document.getElementById('display').value = 'Error';
+/* Responsive Design */
+@media (max-width: 480px){
+    h1{
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+    #calculator{
+        padding: 15px;
+        max-width: 100%;
+    }
+    #display{
+        height: 50px;
+        margin-bottom: 15px;
+        padding: 10px;
+    }
+    #buttons{
+        gap: 8px;
+    }
+    button{
+        height: 45px;
+    }
+    #equals{
+        grid-column: span 2;
     }
 }
-
-function deleteLast() {
-    const display = document.getElementById('display');
-    display.value = display.value.slice(0, -1);
-}
-
-// Keyboard support
-document.addEventListener('keydown', function(event) {
-    const key = event.key;
-    if ((key >= '0' && key <= '9') || ['+', '-', '*', '/', '%', '.'].includes(key)) {
-        appendToDisplay(key);
-    } else if (key === 'Enter') {
-        calculate();
-    } else if (key === 'Backspace') {
-        deleteLast();
-    } else if (key === 'Escape') {
-        clearDisplay();
+@media (max-width: 320px){
+    body{
+        padding: 10px;
     }
-});
-
-// Paste support
-const display = document.getElementById('display');
-display.addEventListener('paste', function(event) {
-    event.preventDefault();
-    const text = event.clipboardData.getData('text/plain');
-    appendToDisplay(text);
-});
-
+    h1{
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+    #calculator{
+        padding: 12px;
+    }
+    #display{
+        height: 45px;
+        font-size: 14px;
+        margin-bottom: 12px;
+    }
+    button{
+        height: 40px;
+        font-size: 12px;
+    }
+}
+@media (min-width: 768px){
+    #calculator{
+        max-width: 450px;
+    }
+    #buttons{
+        gap: 12px;
+    }
+    button{
+        height: 55px;
+    }
+}
