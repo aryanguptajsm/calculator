@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Simple Calculator</h1>
+    <h1>Simple Calculator</h1>  
     <div id="calculator">
         <input type="text" id="display" disabled>
         <div id="buttons">
@@ -26,9 +26,9 @@
              <button class="btn" data-value="*" onclick="appendToDisplay('*')">*</button>
             <button class="btn" data-value="-" onclick="appendToDisplay('-')">-</button>
             <button class="btn" data-value="0" onclick="appendToDisplay('0')">0</button>
-            <button class="btn" data-value "." onclick="appendToDisplay('.')">.</button>
+            <button class="btn" data-value="." onclick="appendToDisplay('.')">.</button>
             <button class="btn" id="equals" onclick="calculate()">=</button>
-            <button class="btn" data-value "+" onclick="appendToDisplay('+')">+</button>
+            <button class="btn" data-value="+" onclick="appendToDisplay('+')">+</button>
             <button class="btn" id="delete" onclick="deleteLast()">DEL</button>
         </div>
     </div>
