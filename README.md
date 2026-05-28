@@ -1,6 +1,6 @@
 # Calculator
 
-A simple web-based calculator application built with HTML, CSS, and JavaScript.
+A simple web-based calculator application built with HTML, CSS, and JavaScript
 
 ## Features
 
@@ -23,4 +23,4 @@ A simple web-based calculator application built with HTML, CSS, and JavaScript.
 
 ## Requirements
 
-No external dependencies required. Works in any modern web browser.
+No external dependencies required. Works in any modern web browser
