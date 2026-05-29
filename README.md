@@ -1,10 +1,10 @@
 # Calculator
 
-A simple web-based calculator application built with HTML, CSS, and JavaScript
+A simple web-based calculator application built with HTML CSS and JavaScript
 
 ## Features
 
-- Basic arithmetic operations (addition, subtraction, multiplication, division)
+- Basic arithmetic operations (addition subtraction multiplication, division)
 - Clean and intuitive user interface
 - Real-time calculation display
 
