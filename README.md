@@ -2,13 +2,13 @@
 
 A simple web-based calculator application built with HTML CSS and JavaScript
 
-## Features
+# Features
 
 - Basic arithmetic operations (addition subtraction multiplication, division)
 - Clean and intuitive user interface
 - Real-time calculation display
 
-## Files
+# Files
 
 - `index.html` - Main HTML structure
 - `style.css` - Styling and layout
